@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
 import 'Screens/HomeScreen.dart';
+import 'utils/ThemeProvider.dart';
 
 void main() {
-  runApp(MoveSPApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ThemeProvider()),
+      ],
+      child: MoveSPApp(),
+    ),
+  );
 }
 
 class MoveSPApp extends StatelessWidget {
@@ -11,11 +19,8 @@ class MoveSPApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Move SP',
-      theme: ThemeData(
-        //primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      title: 'Mov SP',
+      theme: context.watch<ThemeProvider>().getTheme(),
       home: TelaHome(),
     );
   }

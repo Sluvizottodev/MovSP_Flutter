@@ -13,6 +13,8 @@ dependencies:
 
   cupertino_icons: ^1.0.6
   provider: ^6.1.2
+  http: ^1.2.1
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
@@ -22,4 +24,9 @@ flutter:
   uses-material-design: true
 
   assets:
-    - lib/assets/logoVermelhaNome.png
+    - lib/png/logoVermelhaNome.png
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "lib/png/logoVermelhaNome.png"

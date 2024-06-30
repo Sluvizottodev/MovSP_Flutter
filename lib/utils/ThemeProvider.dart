@@ -1,16 +1,9 @@
-
 import 'package:flutter/material.dart';
 
-class ThemeProvider extends ChangeNotifier {
+class ThemeProvider with ChangeNotifier {
   bool _isDarkMode = false;
-  String _selectedLanguage = 'Português';
 
   bool get isDarkMode => _isDarkMode;
-  set isDarkMode(bool value) {
-    _isDarkMode = value;
-    notifyListeners();
-  }
-
 
   void toggleTheme() {
     _isDarkMode = !_isDarkMode;
