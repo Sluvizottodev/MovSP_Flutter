@@ -34,4 +34,4 @@
 
 1. **Clone o repositório**:
    ```sh
-   git clone https://github.com/seuusuario/movspflutter.git
+   git clone https://github.com/Sluvizottodev/MovSP_Flutter.git

@@ -7,24 +7,30 @@ class OlhoVivoService {
 
   static Future<String> authenticate() async {
     final response = await http.post(
-      Uri.parse('http://api.olhovivo.sptrans.com.br/v2.1/Login/Autenticar'),
+      Uri.parse('https://aiko-olhovivo-proxy.aikodigital.io/v2.1/Login/Autenticar'),
       body: {'token': _apiKey},
     );
 
+    print('Authenticate Response: ${response.statusCode}');
+    print('Response Body: ${response.body}');
+
     if (response.statusCode == 200 && response.body == 'true') {
       // Extraímos o cookie da resposta
-      _cookie = response.headers['set-cookie']!;
+      _cookie = response.headers['set-cookie'] ?? '';
       return 'Autenticado';
     } else {
-      return 'Falha na autenticação';
+      return 'Falha na autenticação: ${response.body}';
     }
   }
 
   static Future<List<dynamic>> fetchBusLines() async {
     final response = await http.get(
-      Uri.parse('http://api.olhovivo.sptrans.com.br/v2.1/Linha/Buscar?termosBusca=8000'),
+      Uri.parse('https://aiko-olhovivo-proxy.aikodigital.io/v2.1/Linha/Buscar?termosBusca=8000'),
       headers: {'Cookie': _cookie},
     );
+
+    print('Fetch Bus Lines Response: ${response.statusCode}');
+    print('Response Body: ${response.body}');
 
     if (response.statusCode == 200) {
       return json.decode(response.body);
