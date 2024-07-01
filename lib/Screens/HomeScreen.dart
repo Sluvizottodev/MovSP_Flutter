@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movspflutter/Screens/Configs.dart';
-
-
+import '../componentes/BarraFerramentas.dart';
 import '../utils/OlhoVivoServ.dart';
+import 'OlhoVivoScreen.dart';
 
 class TelaHome extends StatefulWidget {
   @override
@@ -10,13 +10,13 @@ class TelaHome extends StatefulWidget {
 }
 
 class _TelaHomeState extends State<TelaHome> {
-  String _authToken = ''; // Armazena o status da autenticação
-  List<dynamic> _busLines = []; // Lista para armazenar as linhas de ônibus
+  String _authToken = '';
+  List<dynamic> _busLines = [];
 
   @override
   void initState() {
     super.initState();
-    _authenticate(); // Inicia a autenticação ao carregar a tela
+    _authenticate();
   }
 
   Future<void> _authenticate() async {
@@ -56,16 +56,13 @@ class _TelaHomeState extends State<TelaHome> {
       body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
-          // Imagem de fundo
           Image.asset(
             'lib/png/logoVermelhaNome.png',
             fit: BoxFit.cover,
           ),
-          // Sobreposição de cor
           Container(
             color: Colors.black.withOpacity(0.4),
           ),
-          // Conteúdo centralizado
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -107,6 +104,17 @@ class _TelaHomeState extends State<TelaHome> {
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: BottomAppBarComponent(
+        onHomePressed: () {
+          // Navegar para a tela atual (HomePage) não faz nada
+        },
+        onOlhoVivoPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => OlhoVivoScreen()),
+          );
+        },
       ),
     );
   }
