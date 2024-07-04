@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:movspflutter/Screens/Configs.dart';
-import '../componentes/BarraFerramentas.dart';
 import '../utils/OlhoVivoServ.dart';
-import 'OlhoVivoScreen.dart';
+import '../componentes/CustomAppBar.dart';
+import '../componentes/BottomAppBar.dart';
 
 class TelaHome extends StatefulWidget {
   @override
@@ -39,20 +38,7 @@ class _TelaHomeState extends State<TelaHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Ônibus chegando?'),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.settings),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => TelaConfiguracoes()),
-              );
-            },
-          ),
-        ],
-      ),
+      appBar: CustomAppBar(),
       body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
@@ -105,17 +91,7 @@ class _TelaHomeState extends State<TelaHome> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomAppBarComponent(
-        onHomePressed: () {
-          // Navegar para a tela atual (HomePage) não faz nada
-        },
-        onOlhoVivoPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => OlhoVivoScreen()),
-          );
-        },
-      ),
+      bottomNavigationBar: BottomAppBarComponent(),
     );
   }
 }

@@ -12,7 +12,6 @@ class OlhoVivoService {
     );
 
     if (response.statusCode == 200 && response.body == 'true') {
-      // Extraímos o cookie da resposta
       _cookie = response.headers['set-cookie']!;
       return 'Autenticado';
     } else {
