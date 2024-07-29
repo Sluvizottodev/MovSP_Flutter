@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class OlhoVivoService {
-  static final String _apiKey = 'a83f6e12d25b9935516dd137f57876e526e976db72d0f4595969fd1feb5cb73c';
+  static final String _apiKey = 'b1936ff2cf2a7bc847630a80b6aa28c4f4a38cda3abb8d557e8730d745642bbb'; // Use a chave correta
   static String _cookie = '';
 
   static Future<String> authenticate() async {
@@ -12,8 +12,7 @@ class OlhoVivoService {
     );
 
     if (response.statusCode == 200 && response.body == 'true') {
-      // Extraímos o cookie da resposta
-      _cookie = response.headers['set-cookie']!;
+      _cookie = response.headers['set-cookie'] ?? '';
       return 'Autenticado';
     } else {
       return 'Falha na autenticação';

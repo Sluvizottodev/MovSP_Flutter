@@ -17,11 +17,14 @@ void main() {
 class MoveSPApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final themeProvider = context.watch<ThemeProvider>();
+
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       title: 'Mov SP',
-      theme: context.watch<ThemeProvider>().getTheme(),
+      theme: themeProvider.getTheme(),
       home: TelaHome(),
+      themeMode: themeProvider.themeMode,
+      debugShowCheckedModeBanner: false, // Remove o banner de depuração
     );
   }
 }
