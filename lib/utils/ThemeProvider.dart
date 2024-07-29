@@ -15,7 +15,7 @@ class ThemeProvider with ChangeNotifier {
         ? ThemeData.dark()
         : ThemeData.light().copyWith(
       appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.blueAccent,
       ),
     );
   }
